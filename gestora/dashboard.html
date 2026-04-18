@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestora - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "primary-container": "#0052cc",
+          "secondary-fixed-dim": "#b4c5fb",
+          "on-background": "#191c1d",
+          "primary-fixed-dim": "#b2c5ff",
+          "surface-variant": "#e1e3e4",
+          "on-secondary-fixed-variant": "#344573",
+          "primary": "#003d9b",
+          "secondary-fixed": "#dae2ff",
+          "on-secondary": "#ffffff",
+          "surface-container": "#edeeef",
+          "surface": "#f8f9fa",
+          "on-tertiary": "#ffffff",
+          "surface-container-high": "#e7e8e9",
+          "primary-fixed": "#dae2ff",
+          "on-secondary-fixed": "#021945",
+          "on-tertiary-fixed": "#380d00",
+          "surface-container-highest": "#e1e3e4",
+          "background": "#f8f9fa",
+          "on-tertiary-fixed-variant": "#812800",
+          "on-primary-fixed-variant": "#0040a2",
+          "tertiary-container": "#a33500",
+          "tertiary": "#7b2600",
+          "inverse-primary": "#b2c5ff",
+          "on-surface-variant": "#434654",
+          "outline-variant": "#c3c6d6",
+          "on-primary-fixed": "#001848",
+          "on-secondary-container": "#415382",
+          "error-container": "#ffdad6",
+          "outline": "#737685",
+          "surface-container-low": "#f3f4f5",
+          "surface-dim": "#d9dadb",
+          "surface-container-lowest": "#ffffff",
+          "on-primary-container": "#c4d2ff",
+          "tertiary-fixed": "#ffdbcf",
+          "surface-bright": "#f8f9fa",
+          "surface-tint": "#0c56d0",
+          "inverse-surface": "#2e3132",
+          "on-tertiary-container": "#ffc6b2",
+          "secondary-container": "#b6c8fe",
+          "secondary": "#4c5d8d",
+          "error": "#ba1a1a",
+          "on-primary": "#ffffff",
+          "inverse-on-surface": "#f0f1f2",
+          "on-surface": "#191c1d",
+          "on-error": "#ffffff",
+          "tertiary-fixed-dim": "#ffb59b",
+          "on-error-container": "#93000a"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "fontFamily": {
+          "headline": ["Manrope", "sans-serif"],
+          "body": ["Inter", "sans-serif"],
+          "label": ["Inter", "sans-serif"]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { background-color: theme('colors.surface'); color: theme('colors.on-surface'); font-family: theme('fontFamily.body'); }
+  h1, h2, h3, h4, h5, h6 { font-family: theme('fontFamily.headline'); letter-spacing: -0.02em; }
+  .btn-primary { background: linear-gradient(135deg, #003d9b, #0052cc); color: #ffffff; border-radius: theme('borderRadius.lg'); transition: opacity 0.2s ease; }
+  .btn-primary:hover { opacity: 0.9; }
+  .table-row-even { background-color: theme('colors.surface-container-lowest'); }
+  .table-row-odd { background-color: theme('colors.surface-container-low'); }
+</style>
+</head>
+<body class="flex h-screen overflow-hidden text-sm">
+<!-- SideNavBar -->
+<nav class="bg-slate-50 text-blue-700 font-manrope text-sm font-semibold h-screen w-64 fixed left-0 top-0 flex flex-col h-full py-6 z-40 hidden md:flex">
+  <div class="px-6 mb-8">
+    <h2 class="text-lg font-black text-slate-900 tracking-tight">Gestora Portal</h2>
+    <p class="text-xs text-slate-500 font-body font-normal mt-1">Factory Management</p>
+  </div>
+  <div class="px-4 mb-6">
+    <button onclick="window.location.href='novo-pedido.html'" class="w-full py-2.5 px-4 btn-primary font-bold flex items-center justify-center gap-2 shadow-sm rounded-lg">
+      <span class="material-symbols-outlined text-[18px]">add</span>Novo Pedido
+    </button>
+  </div>
+  <ul class="flex-1 space-y-1">
+    <li>
+      <a class="bg-white text-blue-700 shadow-sm rounded-lg mx-2 flex items-center px-4 py-3 gap-3" href="dashboard.html">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>Painel
+      </a>
+    </li>
+    <li>
+      <a class="text-slate-500 hover:bg-slate-100 mx-2 rounded-lg flex items-center px-4 py-3 gap-3 transition-colors" href="dashboard.html">
+        <span class="material-symbols-outlined" href>group</span>Clientes
+      </a>
+    </li>
+    <li>
+      <a class="text-slate-500 hover:bg-slate-100 mx-2 rounded-lg flex items-center px-4 py-3 gap-3 transition-colors" href="dashboard.html">
+        <span class="material-symbols-outlined">receipt_long</span>Pedidos
+      </a>
+    </li>
+  </ul>
+  <div class="mt-auto px-2 space-y-1">
+    <a class="text-slate-500 hover:bg-slate-100 rounded-lg flex items-center px-4 py-3 gap-3 transition-colors" href="#">
+      <span class="material-symbols-outlined">settings</span>Configuracoes
+    </a>
+    <a class="text-slate-500 hover:bg-slate-100 rounded-lg flex items-center px-4 py-3 gap-3 transition-colors" href="#">
+      <span class="material-symbols-outlined">help</span>Suporte
+    </a>
+  </div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col md:ml-64 h-screen overflow-y-auto bg-surface relative">
+  <header class="bg-surface-container-lowest sticky top-0 z-30 px-8 py-6 flex justify-between items-center bg-white/80 backdrop-blur-md">
+    <div>
+      <h1 class="text-2xl font-headline font-bold text-on-surface">Visao Geral</h1>
+    </div>
+    <div class="flex items-center gap-6">
+      <a class="text-on-surface-variant font-medium hover:text-primary transition-colors flex items-center gap-2" href="../login.html">
+        <span class="material-symbols-outlined">logout</span>Sair
+      </a>
+    </div>
+  </header>
+  <div class="p-8 space-y-12">
+    <!-- KPIs -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden group">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div class="flex justify-between items-start relative z-10">
+          <div>
+            <p class="text-on-surface-variant font-medium text-sm mb-1">Total de Clientes Ativos</p>
+            <h2 class="text-4xl font-headline font-extrabold text-on-surface">12</h2>
+          </div>
+          <div class="bg-surface-container p-3 rounded-full text-primary">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden group">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div class="flex justify-between items-start relative z-10">
+          <div>
+            <p class="text-on-surface-variant font-medium text-sm mb-1">Total de Pedidos em Andamento</p>
+            <h2 class="text-4xl font-headline font-extrabold text-on-surface">8</h2>
+          </div>
+          <div class="bg-surface-container p-3 rounded-full text-primary">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Gestao de Clientes -->
+    <section class="bg-surface-container-low rounded-xl p-8" id="clientes">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-headline font-bold text-on-surface">Gestao de Clientes</h3>
+        <button onclick="window.location.href='novo-cliente.html'" class="btn-primary px-5 py-2.5 font-medium flex items-center gap-2 text-sm shadow-sm rounded-lg">
+          <span class="material-symbols-outlined text-[18px]">add</span>Novo Cliente
+        </button>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-surface-container-high text-on-surface-variant uppercase tracking-wider text-xs font-semibold">
+              <th class="p-4 font-body rounded-tl-lg">Cliente</th>
+              <th class="p-4 font-body">Status</th>
+              <th class="p-4 font-body">Ultimo Pedido</th>
+              <th class="p-4 font-body text-right rounded-tr-lg">Acoes</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm font-body">
+            <tr class="table-row-even hover:bg-surface-container transition-colors">
+              <td class="p-4 font-medium text-on-surface">Acme Corp Industrias</td>
+              <td class="p-4">
+                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold inline-flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Ativo
+                </span>
+              </td>
+              <td class="p-4 text-on-surface-variant">12 Out 2025</td>
+              <td class="p-4 text-right">
+                <div class="flex justify-end gap-3 text-on-surface-variant">
+                  <button onclick="window.location.href='detalhes-pedido.html'" class="hover:text-primary transition-colors" title="Ver Pedidos"><span class="material-symbols-outlined text-[20px]">list_alt</span></button>
+                  <button onclick="window.location.href='novo-cliente.html'" class="hover:text-primary transition-colors" title="Editar"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+                  <button class="hover:text-error transition-colors" title="Excluir"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+                </div>
+              </td>
+            </tr>
+            <tr class="table-row-odd hover:bg-surface-container transition-colors">
+              <td class="p-4 font-medium text-on-surface">TechFlow Solutions</td>
+              <td class="p-4">
+                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold inline-flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Ativo
+                </span>
+              </td>
+              <td class="p-4 text-on-surface-variant">08 Out 2025</td>
+              <td class="p-4 text-right">
+                <div class="flex justify-end gap-3 text-on-surface-variant">
+                  <button onclick="window.location.href='detalhes-pedido.html'" class="hover:text-primary transition-colors" title="Ver Pedidos"><span class="material-symbols-outlined text-[20px]">list_alt</span></button>
+                  <button onclick="window.location.href='novo-cliente.html'" class="hover:text-primary transition-colors" title="Editar"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+                  <button class="hover:text-error transition-colors" title="Excluir"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+                </div>
+              </td>
+            </tr>
+            <tr class="table-row-even hover:bg-surface-container transition-colors">
+              <td class="p-4 font-medium text-on-surface">Global Logistica S.A.</td>
+              <td class="p-4">
+                <span class="bg-surface-dim text-on-surface-variant px-3 py-1 rounded-full text-xs font-bold inline-flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-outline"></span>Inativo
+                </span>
+              </td>
+              <td class="p-4 text-on-surface-variant">15 Set 2025</td>
+              <td class="p-4 text-right">
+                <div class="flex justify-end gap-3 text-on-surface-variant">
+                  <button onclick="window.location.href='detalhes-pedido.html'" class="hover:text-primary transition-colors" title="Ver Pedidos"><span class="material-symbols-outlined text-[20px]">list_alt</span></button>
+                  <button onclick="window.location.href='novo-cliente.html'" class="hover:text-primary transition-colors" title="Editar"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+                  <button class="hover:text-error transition-colors" title="Excluir"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- Gestao de Pedidos -->
+    <section class="bg-surface-container-low rounded-xl p-8 mb-12" id="pedidos">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-headline font-bold text-on-surface">Gestao de Pedidos (Geral)</h3>
+        <button onclick="window.location.href='novo-pedido.html'" class="btn-primary px-5 py-2.5 font-medium flex items-center gap-2 text-sm shadow-sm rounded-lg">
+          <span class="material-symbols-outlined text-[18px]">add</span>Novo Pedido
+        </button>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-surface-container-high text-on-surface-variant uppercase tracking-wider text-xs font-semibold">
+              <th class="p-4 font-body rounded-tl-lg">ID Pedido</th>
+              <th class="p-4 font-body">Cliente</th>
+              <th class="p-4 font-body">Validade</th>
+              <th class="p-4 font-body">Status Producao</th>
+              <th class="p-4 font-body text-right rounded-tr-lg">Detalhes</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm font-body">
+            <tr class="table-row-even hover:bg-surface-container transition-colors">
+              <td class="p-4 font-medium text-on-surface">#LT-8829</td>
+              <td class="p-4 text-on-surface-variant">Acme Corp Industrias</td>
+              <td class="p-4 text-on-surface-variant">25 Out 2030</td>
+              <td class="p-4">
+                <span class="bg-tertiary/10 text-tertiary px-3 py-1 rounded-full text-xs font-bold inline-flex items-center gap-1">Em Producao</span>
+              </td>
+              <td class="p-4 text-right">
+                <button onclick="window.location.href='detalhes-pedido.html'" class="text-primary hover:text-primary-container font-medium transition-colors">Ver Detalhes</button>
+              </td>
+            </tr>
+            <tr class="table-row-odd hover:bg-surface-container transition-colors">
+              <td class="p-4 font-medium text-on-surface">#LT-8830</td>
+              <td class="p-4 text-on-surface-variant">TechFlow Solutions</td>
+              <td class="p-4 text-on-surface-variant">28 Out 2029</td>
+              <td class="p-4">
+                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold inline-flex items-center gap-1">Aguardando Insumos</span>
+              </td>
+              <td class="p-4 text-right">
+                <button onclick="window.location.href='detalhes-pedido.html'" class="text-primary hover:text-primary-container font-medium transition-colors">Ver Detalhes</button>
+              </td>
+            </tr>
+            <tr class="table-row-even hover:bg-surface-container transition-colors">
+              <td class="p-4 font-medium text-on-surface">#LT-8825</td>
+              <td class="p-4 text-on-surface-variant">Beta Industria</td>
+              <td class="p-4 text-on-surface-variant">10 Out 2028</td>
+              <td class="p-4">
+                <span class="bg-surface-dim text-on-surface-variant px-3 py-1 rounded-full text-xs font-bold inline-flex items-center gap-1">Concluido</span>
+              </td>
+              <td class="p-4 text-right">
+                <button onclick="window.location.href='detalhes-pedido.html'" class="text-primary hover:text-primary-container font-medium transition-colors">Ver Detalhes</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</main>
+</body></html>

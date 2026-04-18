@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cliente - Meus Pedidos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
+</style>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "primary-container": "#0052cc", "secondary-fixed-dim": "#b4c5fb", "on-background": "#191c1d",
+          "primary-fixed-dim": "#b2c5ff", "surface-variant": "#e1e3e4", "on-secondary-fixed-variant": "#344573",
+          "primary": "#003d9b", "secondary-fixed": "#dae2ff", "on-secondary": "#ffffff",
+          "surface-container": "#edeeef", "surface": "#f8f9fa", "on-tertiary": "#ffffff",
+          "surface-container-high": "#e7e8e9", "primary-fixed": "#dae2ff", "on-secondary-fixed": "#021945",
+          "on-tertiary-fixed": "#380d00", "surface-container-highest": "#e1e3e4", "background": "#f8f9fa",
+          "on-tertiary-fixed-variant": "#812800", "on-primary-fixed-variant": "#0040a2",
+          "tertiary-container": "#a33500", "tertiary": "#7b2600", "inverse-primary": "#b2c5ff",
+          "on-surface-variant": "#434654", "outline-variant": "#c3c6d6", "on-primary-fixed": "#001848",
+          "on-secondary-container": "#415382", "error-container": "#ffdad6", "outline": "#737685",
+          "surface-container-low": "#f3f4f5", "surface-dim": "#d9dadb", "surface-container-lowest": "#ffffff",
+          "on-primary-container": "#c4d2ff", "tertiary-fixed": "#ffdbcf", "surface-bright": "#f8f9fa",
+          "surface-tint": "#0c56d0", "inverse-surface": "#2e3132", "on-tertiary-container": "#ffc6b2",
+          "secondary-container": "#b6c8fe", "secondary": "#4c5d8d", "error": "#ba1a1a",
+          "on-primary": "#ffffff", "inverse-on-surface": "#f0f1f2", "on-surface": "#191c1d",
+          "on-error": "#ffffff", "tertiary-fixed-dim": "#ffb59b", "on-error-container": "#93000a"
+        },
+        "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+        "fontFamily": { "headline": ["Manrope", "sans-serif"], "body": ["Inter", "sans-serif"], "label": ["Inter", "sans-serif"] }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-surface text-on-surface font-body h-screen flex overflow-hidden">
+<!-- Sidebar Cliente -->
+<aside class="bg-slate-50 text-blue-700 font-manrope text-sm font-semibold h-screen w-64 fixed left-0 top-0 flex flex-col h-full py-6 z-40 hidden md:flex">
+  <div class="px-6 mb-8">
+    <h1 class="text-lg font-black text-slate-900 tracking-tight">Portal do Cliente</h1>
+    <p class="font-body text-xs text-on-surface-variant font-normal mt-1">Acompanhamento de Producao</p>
+  </div>
+  <nav class="flex-1 px-2 space-y-1">
+    <a class="bg-white text-blue-700 shadow-sm rounded-lg mx-2 flex items-center gap-3 px-4 py-3 translate-x-1 border border-outline-variant/10" href="meus-pedidos.html">
+      <span class="material-symbols-outlined text-lg filled">receipt_long</span>Meus Pedidos
+    </a>
+  </nav>
+  <div class="px-2 mt-auto pt-4 border-t border-surface-container-high/50 mx-4">
+    <a class="text-slate-500 hover:bg-slate-100 mx-2 flex items-center gap-3 px-4 py-3 rounded-lg transition-colors" href="../login.html">
+      <span class="material-symbols-outlined text-lg">logout</span>Sair
+    </a>
+  </div>
+</aside>
+<!-- Main -->
+<main class="flex-1 md:ml-64 relative bg-surface overflow-y-auto w-full">
+  <header class="md:hidden flex justify-between items-center w-full px-6 py-4 bg-surface/80 backdrop-blur-md sticky top-0 z-50">
+    <h1 class="font-headline text-xl font-extrabold text-on-surface tracking-tight">Portal do Cliente</h1>
+    <a href="../login.html" class="text-on-surface-variant"><span class="material-symbols-outlined">logout</span></a>
+  </header>
+  <div class="max-w-7xl mx-auto px-6 py-12 md:px-12 md:py-20 lg:py-24">
+    <!-- Cabecalho -->
+    <section class="mb-16 max-w-3xl">
+      <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl font-extrabold text-on-surface tracking-tight leading-tight mb-4">
+        Ola, Acme Corp Industrias!
+      </h1>
+      <p class="font-body text-lg md:text-xl text-on-surface-variant font-light max-w-2xl">
+        Acompanhe seus produtos e visualize o status atual da sua producao.
+      </p>
+    </section>
+    <!-- Tabela de Pedidos -->
+    <section class="bg-surface-container-lowest rounded-xl shadow-[0_8px_32px_rgba(25,28,29,0.04)] border border-outline-variant/10 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[800px]">
+          <thead>
+            <tr class="border-b border-outline-variant/10 bg-surface-container-low text-on-surface-variant font-label text-xs uppercase tracking-widest">
+              <th class="px-6 py-4 font-semibold">Produto</th>
+              <th class="px-6 py-4 font-semibold">Status</th>
+              <th class="px-6 py-4 font-semibold">Codigo do Lote</th>
+              <th class="px-6 py-4 font-semibold">Validade</th>
+              <th class="px-6 py-4 font-semibold text-right">Acao</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-outline-variant/10">
+            <tr class="hover:bg-surface-container-low/50 transition-colors group">
+              <td class="px-6 py-5">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-outline group-hover:bg-primary-fixed group-hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined text-lg">science</span>
+                  </div>
+                  <span class="font-headline font-bold text-base text-on-surface tracking-tight">Fertilizante Granulado NK</span>
+                </div>
+              </td>
+              <td class="px-6 py-5">
+                <span class="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-full font-label text-xs uppercase tracking-widest font-semibold inline-block">Em Producao</span>
+              </td>
+              <td class="px-6 py-5 font-body text-sm text-on-surface font-medium">LT-8829</td>
+              <td class="px-6 py-5 font-body text-sm text-on-surface font-medium">25 Out 2030</td>
+              <td class="px-6 py-5 text-right">
+                <button onclick="window.location.href='acompanhamento.html'" class="text-primary hover:text-primary-container font-label text-sm uppercase tracking-wider font-semibold transition-colors inline-flex items-center gap-1 group-hover:translate-x-1 duration-300">
+                  Acompanhar<span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </button>
+              </td>
+            </tr>
+            <tr class="hover:bg-surface-container-low/50 transition-colors group">
+              <td class="px-6 py-5">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-outline group-hover:bg-tertiary-fixed group-hover:text-tertiary transition-colors">
+                    <span class="material-symbols-outlined text-lg">water_drop</span>
+                  </div>
+                  <span class="font-headline font-bold text-base text-on-surface tracking-tight">Solucao Quimica SP-400</span>
+                </div>
+              </td>
+              <td class="px-6 py-5">
+                <span class="bg-tertiary-fixed text-tertiary px-3 py-1 rounded-full font-label text-xs uppercase tracking-widest font-semibold inline-block">Laboratorio</span>
+              </td>
+              <td class="px-6 py-5 font-body text-sm text-on-surface font-medium">LT-8830</td>
+              <td class="px-6 py-5 font-body text-sm text-on-surface font-medium">28 Out 2029</td>
+              <td class="px-6 py-5 text-right">
+                <button onclick="window.location.href='acompanhamento.html'" class="text-primary hover:text-primary-container font-label text-sm uppercase tracking-wider font-semibold transition-colors inline-flex items-center gap-1 group-hover:translate-x-1 duration-300">
+                  Acompanhar<span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </button>
+              </td>
+            </tr>
+            <tr class="hover:bg-surface-container-low/50 transition-colors group">
+              <td class="px-6 py-5">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-outline group-hover:bg-surface-container-high transition-colors">
+                    <span class="material-symbols-outlined text-lg">inventory_2</span>
+                  </div>
+                  <span class="font-headline font-bold text-base text-on-surface tracking-tight">Composto Organico Bio-5</span>
+                </div>
+              </td>
+              <td class="px-6 py-5">
+                <span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full font-label text-xs uppercase tracking-widest font-semibold inline-block">Aguardando Insumos</span>
+              </td>
+              <td class="px-6 py-5 font-body text-sm text-on-surface font-medium">LT-8831</td>
+              <td class="px-6 py-5 font-body text-sm text-on-surface font-medium">10 Out 2028</td>
+              <td class="px-6 py-5 text-right">
+                <button onclick="window.location.href='acompanhamento.html'" class="text-primary hover:text-primary-container font-label text-sm uppercase tracking-wider font-semibold transition-colors inline-flex items-center gap-1 group-hover:translate-x-1 duration-300">
+                  Acompanhar<span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <footer class="mt-20 pt-8 border-t border-outline-variant/10 text-center text-on-surface-variant text-sm">
+      <p>© 2026 Portal do Cliente. Todos os direitos reservados.</p>
+    </footer>
+  </div>
+</main>
+</body></html>

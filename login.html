@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - Gestao Quimica</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-primary": "#ffffff",
+          "on-tertiary-container": "#ffc6b2",
+          "tertiary": "#7b2600",
+          "on-secondary-fixed-variant": "#344573",
+          "tertiary-container": "#a33500",
+          "tertiary-fixed": "#ffdbcf",
+          "surface-container-lowest": "#ffffff",
+          "secondary-fixed": "#dae2ff",
+          "primary": "#003d9b",
+          "outline": "#737685",
+          "on-secondary-container": "#415382",
+          "inverse-surface": "#2e3132",
+          "on-primary-container": "#c4d2ff",
+          "on-error": "#ffffff",
+          "on-tertiary": "#ffffff",
+          "secondary-container": "#b6c8fe",
+          "on-surface": "#191c1d",
+          "inverse-on-surface": "#f0f1f2",
+          "surface-tint": "#0c56d0",
+          "on-tertiary-fixed": "#380d00",
+          "surface-dim": "#d9dadb",
+          "surface": "#f8f9fa",
+          "primary-fixed": "#dae2ff",
+          "on-surface-variant": "#434654",
+          "secondary-fixed-dim": "#b4c5fb",
+          "on-secondary-fixed": "#021945",
+          "secondary": "#4c5d8d",
+          "inverse-primary": "#b2c5ff",
+          "on-primary-fixed-variant": "#0040a2",
+          "on-secondary": "#ffffff",
+          "primary-container": "#0052cc",
+          "surface-variant": "#e1e3e4",
+          "surface-bright": "#f8f9fa",
+          "surface-container-highest": "#e1e3e4",
+          "surface-container": "#edeeef",
+          "background": "#f8f9fa",
+          "on-primary-fixed": "#001848",
+          "on-error-container": "#93000a",
+          "error": "#ba1a1a",
+          "error-container": "#ffdad6",
+          "primary-fixed-dim": "#b2c5ff",
+          "surface-container-high": "#e7e8e9",
+          "tertiary-fixed-dim": "#ffb59b",
+          "on-tertiary-fixed-variant": "#812800",
+          "outline-variant": "#c3c6d6",
+          "on-background": "#191c1d",
+          "surface-container-low": "#f3f4f5"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "fontFamily": {
+          "headline": ["Manrope", "sans-serif"],
+          "body": ["Inter", "sans-serif"],
+          "label": ["Inter", "sans-serif"]
+        }
+      },
+    },
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+</style>
+</head>
+<body class="bg-surface min-h-screen flex flex-col font-body text-on-surface antialiased selection:bg-primary/20 selection:text-primary">
+<main class="flex-grow flex items-center justify-center p-6 sm:p-12">
+  <div class="bg-surface-container-lowest w-full max-w-[420px] rounded-xl p-10 shadow-[0_8px_32px_rgba(25,28,29,0.06)] ring-1 ring-outline-variant/15 flex flex-col gap-10 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary-container"></div>
+    <div class="flex flex-col gap-3 items-center text-center">
+      <h1 class="text-3xl font-headline font-extrabold text-on-surface tracking-tight">Acesse sua conta</h1>
+      <p class="text-sm font-body text-on-surface-variant">Insira suas credenciais para continuar</p>
+    </div>
+    <form id="login-form" class="flex flex-col gap-6" method="POST">
+      <div class="flex flex-col gap-2">
+        <label class="text-sm font-label font-medium text-on-surface-variant" for="login">Login</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+            <span class="material-symbols-outlined text-[20px]">person</span>
+          </div>
+          <input class="w-full bg-surface-container-low text-on-surface placeholder:text-outline-variant border-0 rounded-md pl-10 pr-4 py-3.5 text-sm font-body transition-shadow focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest" id="login" name="login" placeholder="seu.login" required type="text"/>
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="text-sm font-label font-medium text-on-surface-variant" for="password">Senha</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+            <span class="material-symbols-outlined text-[20px]">lock</span>
+          </div>
+          <input class="w-full bg-surface-container-low text-on-surface placeholder:text-outline-variant border-0 rounded-md pl-10 pr-12 py-3.5 text-sm font-body transition-shadow focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest" id="password" name="password" placeholder="••••••••" required type="password"/>
+          <button aria-label="Mostrar senha" class="absolute inset-y-0 right-0 pr-3 flex items-center text-outline hover:text-on-surface transition-colors focus:outline-none" type="button" onclick="var i=document.getElementById('password');i.type=i.type==='password'?'text':'password'">
+            <span class="material-symbols-outlined text-[20px]">visibility</span>
+          </button>
+        </div>
+      </div>
+      <div class="flex flex-col gap-4 mt-2">
+        <button class="w-full py-3.5 px-6 bg-gradient-to-br from-primary to-primary-container text-on-primary font-body font-semibold text-sm rounded-md shadow-sm transition-all hover:shadow-md hover:opacity-95 active:scale-[0.98] flex items-center justify-center gap-2" type="submit">
+          Entrar
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </button>
+      </div>
+    </form>
+    <!-- Demo shortcuts -->
+    <div class="border-t border-outline-variant/20 pt-6 flex flex-col gap-2">
+      <p class="text-xs text-on-surface-variant text-center font-label uppercase tracking-widest mb-2">Acesso Rapido (Demo)</p>
+      <a href="gestora/dashboard.html" class="w-full py-2.5 px-4 rounded-md border border-outline-variant/40 text-primary font-label text-sm font-semibold text-center hover:bg-surface-container-low transition-colors">
+        Entrar como Gestora
+      </a>
+      <a href="cliente/meus-pedidos.html" class="w-full py-2.5 px-4 rounded-md border border-outline-variant/40 text-on-surface-variant font-label text-sm font-semibold text-center hover:bg-surface-container-low transition-colors">
+        Entrar como Cliente
+      </a>
+    </div>
+  </div>
+</main>
+<script>
+  document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const login = document.getElementById('login').value.toLowerCase().trim();
+    if (login === 'gestora' || login === 'admin') {
+      window.location.href = 'gestora/dashboard.html';
+    } else {
+      window.location.href = 'cliente/meus-pedidos.html';
+    }
+  });
+</script>
+</body></html>

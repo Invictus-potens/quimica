@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestora - Editar Pedido #LT-8829</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "outline": "#737685", "inverse-on-surface": "#f0f1f2", "primary-fixed": "#dae2ff",
+          "surface-container-high": "#e7e8e9", "primary-fixed-dim": "#b2c5ff", "background": "#f8f9fa",
+          "surface-dim": "#d9dadb", "on-tertiary-container": "#ffc6b2", "inverse-surface": "#2e3132",
+          "on-primary-fixed-variant": "#0040a2", "on-primary-fixed": "#001848", "on-tertiary-fixed": "#380d00",
+          "on-primary": "#ffffff", "surface-container-low": "#f3f4f5", "surface-tint": "#0c56d0",
+          "surface-bright": "#f8f9fa", "primary": "#003d9b", "tertiary-fixed": "#ffdbcf",
+          "tertiary": "#7b2600", "tertiary-fixed-dim": "#ffb59b", "secondary-container": "#b6c8fe",
+          "outline-variant": "#c3c6d6", "secondary-fixed-dim": "#b4c5fb", "on-secondary-container": "#415382",
+          "on-error": "#ffffff", "inverse-primary": "#b2c5ff", "secondary": "#4c5d8d",
+          "on-primary-container": "#c4d2ff", "on-secondary": "#ffffff", "on-surface-variant": "#434654",
+          "on-secondary-fixed-variant": "#344573", "error": "#ba1a1a", "on-secondary-fixed": "#021945",
+          "on-error-container": "#93000a", "surface-container": "#edeeef", "surface-variant": "#e1e3e4",
+          "tertiary-container": "#a33500", "surface": "#f8f9fa", "on-surface": "#191c1d",
+          "error-container": "#ffdad6", "primary-container": "#0052cc", "on-background": "#191c1d",
+          "on-tertiary": "#ffffff", "secondary-fixed": "#dae2ff", "surface-container-highest": "#e1e3e4",
+          "on-tertiary-fixed-variant": "#812800", "surface-container-lowest": "#ffffff"
+        },
+        "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+        "fontFamily": { "headline": ["Manrope"], "body": ["Inter"], "label": ["Inter"] }
+      },
+    },
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; color: #191c1d; }
+  h1, h2, h3, h4, h5, h6, .font-headline { font-family: 'Manrope', sans-serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
+  .btn-primary { background: linear-gradient(135deg, #003d9b, #0052cc); color: #ffffff; transition: all 0.2s ease-in-out; }
+  .btn-primary:hover { box-shadow: 0 4px 12px rgba(0, 61, 155, 0.2); transform: translateY(-1px); }
+  .btn-secondary { background-color: transparent; border: 1px solid rgba(115, 118, 133, 0.2); color: #003d9b; }
+  .btn-secondary:hover { background-color: rgba(225, 227, 228, 0.5); }
+  .input-field { background-color: #ffffff; border: 1px solid rgba(195, 198, 214, 0.3); color: #191c1d; transition: all 0.2s ease; }
+  .input-field:focus { outline: none; box-shadow: inset 0 0 0 2px rgba(0, 61, 155, 0.2); border-color: transparent; }
+  select.input-field { appearance: none; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23434654' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e"); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; padding-right: 2.5rem; }
+</style>
+</head>
+<body class="flex h-screen overflow-hidden antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-[#F3F4F5] p-4 space-y-2 z-20">
+  <div class="flex items-center gap-3 px-4 py-6 mb-4">
+    <div>
+      <h1 class="font-['Manrope'] font-black text-[#003D9B] text-lg leading-tight tracking-tight">Gestora Portal</h1>
+      <p class="font-['Inter'] text-xs text-slate-500 uppercase tracking-wider mt-0.5">Painel de Controle</p>
+    </div>
+  </div>
+  <div class="px-2 mb-6">
+    <button onclick="window.location.href='novo-pedido.html'" class="w-full btn-primary py-2.5 px-4 rounded-lg font-['Inter'] text-sm font-semibold flex items-center justify-center gap-2">
+      <span class="material-symbols-outlined text-[18px]">add</span>Novo Pedido
+    </button>
+  </div>
+  <div class="flex-1 space-y-1 overflow-y-auto pr-2">
+    <a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-600 font-['Inter'] text-sm hover:bg-white/50 transition-all" href="dashboard.html">
+      <span class="material-symbols-outlined text-[20px]">dashboard</span><span>Dashboard</span>
+    </a>
+    <a class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-white text-[#0052CC] font-bold transition-all" href="detalhes-pedido.html" style="box-shadow: 0 4px 12px rgba(25, 28, 29, 0.04);">
+      <span class="material-symbols-outlined fill text-[20px]">inventory_2</span><span>Pedidos</span>
+    </a>
+    <a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-600 font-['Inter'] text-sm hover:bg-white/50 transition-all" href="#">
+      <span class="material-symbols-outlined text-[20px]">settings</span><span>Configuracoes</span>
+    </a>
+  </div>
+  <div class="mt-auto space-y-1 pt-4 border-t border-slate-200/50">
+    <a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-600 font-['Inter'] text-sm hover:bg-white/50 transition-all" href="#">
+      <span class="material-symbols-outlined text-[20px]">help_outline</span><span>Suporte</span>
+    </a>
+    <a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-600 font-['Inter'] text-sm hover:bg-white/50 transition-all" href="../login.html">
+      <span class="material-symbols-outlined text-[20px]">logout</span><span>Sair</span>
+    </a>
+  </div>
+</nav>
+<!-- Main -->
+<main class="flex-1 md:ml-64 flex flex-col h-screen overflow-y-auto bg-surface relative">
+  <header class="w-full top-0 sticky z-10 flex justify-between items-center px-8 py-3 bg-[#F8F9FA] bg-opacity-90 backdrop-blur-md" style="box-shadow: 0 4px 20px rgba(25, 28, 29, 0.03);">
+    <div class="flex items-center gap-4">
+      <button onclick="window.location.href='detalhes-pedido.html'" class="text-on-surface-variant hover:text-primary transition-colors flex items-center">
+        <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+      </button>
+      <div>
+        <p class="font-['Inter'] text-xs text-on-surface-variant uppercase tracking-wider font-medium mb-0.5">Editar Registro</p>
+        <h2 class="font-['Manrope'] text-2xl font-bold text-[#191C1D] tracking-tight leading-none">Editar Pedido #LT-8829</h2>
+      </div>
+    </div>
+  </header>
+  <div class="flex-1 p-8 lg:p-12 max-w-7xl mx-auto w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Coluna Principal -->
+      <div class="lg:col-span-2 space-y-8">
+        <div class="bg-surface-container-lowest rounded-xl p-8" style="box-shadow: 0 4px 24px rgba(25, 28, 29, 0.04);">
+          <h3 class="font-headline text-lg font-bold text-on-surface mb-6 flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[20px]">info</span>Informacoes Gerais
+          </h3>
+          <div class="space-y-6">
+            <div>
+              <label class="block font-label text-sm font-semibold text-on-surface-variant mb-2 uppercase tracking-wide" for="titulo">Titulo do Pedido</label>
+              <input class="input-field w-full px-4 py-3 rounded-lg font-body text-base" id="titulo" placeholder="Ex: Fertilizante NK" type="text" value="Fertilizante Granulado NK"/>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block font-label text-sm font-semibold text-on-surface-variant mb-2 uppercase tracking-wide" for="lote">Codigo do Lote</label>
+                <input class="input-field w-full px-4 py-3 rounded-lg font-body text-base font-medium text-primary bg-primary-fixed/30" id="lote" readonly type="text" value="#LT-8829"/>
+                <p class="mt-1.5 text-xs text-outline font-body">Codigo gerado automaticamente.</p>
+              </div>
+              <div>
+                <label class="block font-label text-sm font-semibold text-on-surface-variant mb-2 uppercase tracking-wide" for="data">Data de Validade</label>
+                <div class="relative">
+                  <input class="input-field w-full pl-4 pr-10 py-3 rounded-lg font-body text-base" id="data" type="date" value="2030-10-25"/>
+                  <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">calendar_today</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-surface-container-low rounded-xl p-6 border border-surface-container-highest/50">
+          <label class="block font-label text-sm font-semibold text-on-surface-variant mb-2 uppercase tracking-wide" for="notas">Notas de Chao de Fabrica</label>
+          <textarea class="input-field w-full px-4 py-3 rounded-lg font-body text-base resize-none" id="notas" placeholder="Adicione observacoes para a equipe..." rows="3"></textarea>
+        </div>
+      </div>
+      <!-- Coluna Lateral -->
+      <div class="space-y-8">
+        <div class="bg-surface-container-lowest rounded-xl p-8 relative overflow-hidden" style="box-shadow: 0 8px 32px rgba(25, 28, 29, 0.05);">
+          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary-container"></div>
+          <h3 class="font-headline text-lg font-bold text-on-surface mb-6 flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[20px]">precision_manufacturing</span>Status da Producao
+          </h3>
+          <div class="space-y-5">
+            <p class="font-body text-sm text-on-surface-variant mb-2">Defina o estagio atual deste lote.</p>
+            <div class="relative">
+              <select class="input-field w-full px-4 py-3.5 rounded-lg font-body text-base font-medium text-on-surface cursor-pointer appearance-none">
+                <option value="recepcao">Recepcao de Materiais</option>
+                <option value="laboratorio">Laboratorio</option>
+                <option selected value="processamento">Processamento</option>
+                <option value="envase">Envase</option>
+                <option value="expedicao">Expedicao</option>
+              </select>
+            </div>
+            <div class="pt-4 border-t border-surface-container-high mt-4">
+              <div class="flex items-center gap-3 text-sm font-body">
+                <div class="w-3 h-3 rounded-full bg-primary flex-shrink-0 relative">
+                  <div class="absolute inset-0 rounded-full bg-primary animate-ping opacity-20"></div>
+                </div>
+                <span class="text-on-surface font-medium">Processamento em andamento</span>
+              </div>
+              <div class="w-full bg-surface-container h-1.5 rounded-full mt-3 overflow-hidden">
+                <div class="bg-primary h-full rounded-full w-[60%]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-surface-container-lowest rounded-xl p-6 flex flex-col gap-3" style="box-shadow: 0 4px 24px rgba(25, 28, 29, 0.04);">
+          <button onclick="window.location.href='detalhes-pedido.html'" class="btn-primary w-full py-3.5 px-6 rounded-lg font-body font-semibold text-base flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-[20px]">save</span>Salvar Alteracoes
+          </button>
+          <button onclick="window.location.href='detalhes-pedido.html'" class="btn-secondary w-full py-3.5 px-6 rounded-lg font-body font-medium text-base flex items-center justify-center">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+    <footer class="mt-auto px-8 py-6 text-center lg:text-left border-t border-surface-container-high/50 mt-12">
+      <p class="font-body text-xs text-outline font-medium tracking-wide">© 2026 Gestora Portal. Todos os direitos reservados.</p>
+    </footer>
+  </div>
+</main>
+</body></html>
