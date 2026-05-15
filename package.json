@@ -1,0 +1,9 @@
+{
+  "name": "quimica-static-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Servidor estatico simples para rodar o prototipo HTML localmente.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
